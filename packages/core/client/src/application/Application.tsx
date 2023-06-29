@@ -11,6 +11,7 @@ import { SigninPage, SignupPage } from '../auth';
 import { SigninPageExtensionProvider } from '../auth/SigninPageExtension';
 import { BlockSchemaComponentProvider } from '../block-provider';
 import { RemoteDocumentTitleProvider } from '../document-title';
+import { GlobalThemeProvider } from '../global-theme';
 import { i18n } from '../i18n';
 import { PinnedPluginListProvider } from '../plugin-manager';
 import PMProvider, { PluginManagerLink, SettingsCenterDropdown } from '../pm';
@@ -157,9 +158,11 @@ export class Application {
         return <Spin />;
       }
       return (
-        <ErrorBoundary FallbackComponent={ErrorFallback} onError={this.handleErrors}>
-          <App providers={this.providers} />
-        </ErrorBoundary>
+        <GlobalThemeProvider>
+          <ErrorBoundary FallbackComponent={ErrorFallback} onError={this.handleErrors}>
+            <App providers={this.providers} />
+          </ErrorBoundary>
+        </GlobalThemeProvider>
       );
     };
   }
