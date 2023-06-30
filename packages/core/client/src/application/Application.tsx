@@ -51,7 +51,7 @@ export const getCurrentTimezone = () => {
 export type PluginCallback = () => Promise<any>;
 
 const App = React.memo((props: any) => {
-  const C = compose(...props.providers)(() => {
+  const C = compose(...props.providers)(function Com() {
     const routes = useRoutes();
     return <RouteSwitch routes={routes} />;
   });
@@ -82,6 +82,7 @@ export class Application {
     this.use(APIClientProvider, { apiClient: this.apiClient });
     this.use(I18nextProvider, { i18n: this.i18n });
     this.use(AntdConfigProvider, { remoteLocale: true });
+    this.use(GlobalThemeProvider);
     this.use(RemoteRouteSwitchProvider, {
       components: {
         AuthLayout,
@@ -158,11 +159,9 @@ export class Application {
         return <Spin />;
       }
       return (
-        <GlobalThemeProvider>
-          <ErrorBoundary FallbackComponent={ErrorFallback} onError={this.handleErrors}>
-            <App providers={this.providers} />
-          </ErrorBoundary>
-        </GlobalThemeProvider>
+        <ErrorBoundary FallbackComponent={ErrorFallback} onError={this.handleErrors}>
+          <App providers={this.providers} />
+        </ErrorBoundary>
       );
     };
   }
