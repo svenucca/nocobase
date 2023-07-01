@@ -33,6 +33,7 @@ import { ErrorFallback } from '../schema-component/antd/error-fallback';
 import { SchemaInitializerProvider } from '../schema-initializer';
 import { BlockTemplateDetails, BlockTemplatePage } from '../schema-templates';
 import { SystemSettingsProvider } from '../system-settings';
+import { CurrentUserSettingsMenuProvider } from '../user/CurrentUserSettingsMenuProvider';
 import { compose } from './compose';
 
 export interface ApplicationOptions {
@@ -79,6 +80,7 @@ export class Application {
       ...options.apiClient,
     });
     this.i18n = options.i18n || i18n;
+    this.use(CurrentUserSettingsMenuProvider);
     this.use(APIClientProvider, { apiClient: this.apiClient });
     this.use(I18nextProvider, { i18n: this.i18n });
     this.use(AntdConfigProvider, { remoteLocale: true });

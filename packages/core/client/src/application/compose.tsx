@@ -13,6 +13,6 @@ export const compose = (...components: any[]) => {
     );
   });
   return (LastChild?: any) => (props?: any) => {
-    return <Root>{LastChild && <LastChild {...props} />}</Root>;
+    return <Root>{LastChild ? <LastChild {...props} /> : null}</Root>;
   };
 };
