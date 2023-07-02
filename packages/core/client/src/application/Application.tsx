@@ -33,6 +33,7 @@ import { ErrorFallback } from '../schema-component/antd/error-fallback';
 import { SchemaInitializerProvider } from '../schema-initializer';
 import { BlockTemplateDetails, BlockTemplatePage } from '../schema-templates';
 import { SystemSettingsProvider } from '../system-settings';
+import { CurrentUserProvider } from '../user';
 import { CurrentUserSettingsMenuProvider } from '../user/CurrentUserSettingsMenuProvider';
 import { compose } from './compose';
 
@@ -85,6 +86,7 @@ export class Application {
     this.use(I18nextProvider, { i18n: this.i18n });
     this.use(AntdConfigProvider, { remoteLocale: true });
     this.use(GlobalThemeProvider);
+    this.use(CurrentUserProvider);
     this.use(RemoteRouteSwitchProvider, {
       components: {
         AuthLayout,

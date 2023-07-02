@@ -6,7 +6,7 @@ import {
   ACLRolesCheckProvider,
   CurrentAppInfoProvider,
   CurrentUser,
-  CurrentUserProvider,
+  NavigateIfNotSignIn,
   PinnedPluginList,
   RemoteCollectionManagerProvider,
   RemoteSchemaTemplateManagerProvider,
@@ -291,13 +291,13 @@ export const InternalAdminLayout = (props: any) => {
 export const AdminProvider = (props) => {
   return (
     <CurrentAppInfoProvider>
-      <CurrentUserProvider>
+      <NavigateIfNotSignIn>
         <RemoteSchemaTemplateManagerProvider>
           <RemoteCollectionManagerProvider>
             <ACLRolesCheckProvider>{props.children}</ACLRolesCheckProvider>
           </RemoteCollectionManagerProvider>
         </RemoteSchemaTemplateManagerProvider>
-      </CurrentUserProvider>
+      </NavigateIfNotSignIn>
     </CurrentAppInfoProvider>
   );
 };
