@@ -2,14 +2,14 @@ import { CloseOutlined, DeleteOutlined } from '@ant-design/icons';
 import { css, cx } from '@emotion/css';
 import { ISchema, useForm } from '@formily/react';
 import {
-    ActionContextProvider,
-    SchemaComponent,
-    SchemaInitializerItemOptions,
-    useAPIClient,
-    useActionContext,
-    useCompile,
-    useRequest,
-    useResourceActionContext,
+  ActionContextProvider,
+  SchemaComponent,
+  SchemaInitializerItemOptions,
+  useAPIClient,
+  useActionContext,
+  useCompile,
+  useRequest,
+  useResourceActionContext,
 } from '@nocobase/client';
 import { Registry, parse, str2moment } from '@nocobase/utils/client';
 import { Alert, Button, Dropdown, Input, Modal, Tag, message } from 'antd';
