@@ -7,7 +7,6 @@ export const app = new Application({
   dynamicImport: (name: string) => {
     return import(`../plugins/${name}`);
   },
-  plugins: ['custom-theme'],
 });
 
 export default app.render();
