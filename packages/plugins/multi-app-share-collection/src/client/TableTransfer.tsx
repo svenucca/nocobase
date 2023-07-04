@@ -63,7 +63,9 @@ const useCollections = () => {
     },
   );
 
-  const res2 = useRequest({
+  const res2 = useRequest<{
+    data: any[];
+  }>({
     url: `collections`,
     params: {
       fields: ['name', 'title', 'hidden', 'category.name', 'category.color', 'category.sort'],
@@ -72,7 +74,9 @@ const useCollections = () => {
     },
   });
 
-  const res3 = useRequest({
+  const res3 = useRequest<{
+    data: any[];
+  }>({
     url: `collectionCategories`,
     params: {
       sort: 'sort',
